@@ -3,7 +3,7 @@ namespace Grav\Theme;
 
 use Grav\Common\Theme;
 
-class Hypertext extends Theme
+class Hypertext Gallery extends Theme
 {
     
 }
