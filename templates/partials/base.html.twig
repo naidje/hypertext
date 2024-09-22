@@ -46,6 +46,24 @@
   {% endif %}
 
   {% include 'partials/page/js-css.html.twig' %}
+
+  {% block javascript %}
+  {% do assets.addJs('theme://js/jquery.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/jquery.scrolly.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/jquery.scrollex.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/jquery.dropotron.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/browser.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/breakpoints.min.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/util.js',{group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/main.js', {group: 'bottom'}) %}
+  {% do assets.addJs('theme://js/custom.js',{group: 'bottom'}) %}
+  {% endblock %}
+
+  {% block assets deferred %}
+  {{ assets.js()|raw}}
+  {{ assets.css()|raw }}
+  {% endblock %}
+
 {% endblock head %}
 </head>
 
@@ -91,6 +109,10 @@
     {% include 'partials/page/footer.html.twig' %}
   {% endblock %}
   {{ html5 ? '</footer>' : '</div>' }}
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
 
 </body>
 {% endif %}
